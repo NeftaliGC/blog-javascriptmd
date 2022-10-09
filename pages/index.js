@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { getAllFilesMetaData } from '../lib/mdx';
+import Link from 'next/link';
 
-export default function Home() {
+export default function Home({ posts }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -22,19 +24,27 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>JavaScript Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
+          <Link href='/Blog' className={styles.card}>
+            <a>
+              <code className={styles.code}>Blog</code>
+            </a>
+          </Link>
+        </div>
+
+        <div className={styles.grid}>
+          {posts.map( (posts) => (
+            <Link key={posts.slug} href={`/${posts.slug}`}>
+              <a className={styles.card}>
+                <h2>{posts.title} &rarr;</h2>
+                <p>{posts.date}.</p>
+              </a>
+            </Link>
+          ))}
         </div>
       </main>
 
       <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <a href="https://www.uaemex.mx/" target="_blank" rel="noopener noreferrer">
           Powered by{' '}
           <span className={styles.logo}>
             <Image src="/Logo_de_la_UAEMex.svg" alt="UAEMEX Logo" width={50} height={40} />
@@ -42,5 +52,15 @@ export default function Home() {
         </a>
       </footer>
     </div>
-  )
+  );
+}
+
+export async function getStaticProps() {
+
+  const posts = await getAllFilesMetaData();
+  console.log(posts);
+
+  return {
+    props: {posts},
+  }
 }
