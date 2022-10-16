@@ -1,8 +1,8 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import styles from '../styles/Home.module.css';
 import { getAllFilesMetaData } from '../lib/mdx';
 import Link from 'next/link';
+import { Footer } from '../components/footer';
 
 export default function Home({ posts }) {
   return (
@@ -41,16 +41,11 @@ export default function Home({ posts }) {
             </Link>
           ))}
         </div>
-      </main>
 
-      <footer className={styles.footer}>
-        <a href="https://www.uaemex.mx/" target="_blank" rel="noopener noreferrer">
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/Logo_de_la_UAEMex.svg" alt="UAEMEX Logo" width={50} height={40} />
-          </span>
-        </a>
-      </footer>
+      </main>
+      
+      <Footer/>
+      
     </div>
   );
 }
@@ -64,3 +59,4 @@ export async function getStaticProps() {
     props: {posts},
   }
 }
+0
