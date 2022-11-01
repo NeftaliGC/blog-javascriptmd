@@ -1,5 +1,5 @@
+
 export const Youtube = ({ videoId }) => {
-  <AspectRatio>
     <iframe
         title={videoId}
         src={`https://www.youtube.com/embed/${videoId}`}
@@ -8,6 +8,5 @@ export const Youtube = ({ videoId }) => {
         allowFullScreen
         loading="lazy"
       />
-  </AspectRatio>
 
 }
