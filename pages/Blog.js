@@ -1,6 +1,7 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { Footer } from '../components/footer';
+import { Header } from '../components/header';
 
 export default function Blog() {
     return (
@@ -11,18 +12,13 @@ export default function Blog() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
+            <Header/>
+
             <main className={styles.main}>
                 <h1>Aquí estan todos los articulos del blog de JavaScript</h1>
             </main>
 
-            <footer className={styles.footer}>
-                <a href="https://www.uaemex.mx/" target="_blank" rel="noopener noreferrer">
-                    Powered by{' '}
-                    <span className={styles.logo}>
-                        <Image src="/Logo_de_la_UAEMex.svg" alt="UAEMEX Logo" width={50} height={40} />
-                    </span>
-                </a>
-            </footer>
+            <Footer />
         </div>
     );
 }

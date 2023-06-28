@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css';
 import { getAllFilesMetaData } from '../lib/mdx';
 import Link from 'next/link';
 import { Footer } from '../components/footer';
+import { Header } from '../components/header';
 
 export default function Home({ posts }) {
   return (
@@ -13,14 +14,14 @@ export default function Home({ posts }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <Header/>
+
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href=":blank">JavaScript Blog!</a>
-        </h1>
 
         <p className={styles.description}>
-          Espacio para agregar contenido en{' '}
-          <code className={styles.code}>pages/index.js</code>
+          Ultimo post de{' '}
+          <code className={styles.code}>Toluca JS</code>
+          
         </p>
 
         <div className={styles.grid}>
